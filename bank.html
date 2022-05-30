@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Owner Bank</title>
+</head>
+<body>
+    <div class="F" id="first">
+        <h3 class="bankTitle font-weight-bold">Welcome to 0wner Bank</h3>
+        <div class="loginArea border border-primary">
+            <h4>Login</h4>
+            <input id="mail" type="text" class="form-control" placeholder="entr your mail"><br>
+            <input id="pass" type="password" class="form-control" placeholder="enter password"><br>
+            <button type="button" class="btn btn-success" id="button">Enter</button>
+    
+    
+        </div>
+
+        <br><br>
+        <p id="wrong"></p>
+    
+    </div>
+    
+
+    <div class="t" id="transactionArea">
+        <h3 id="transactionTitle" class="font-weight-bold">Welcome to Transaction Area</h3>
+       <br><br><br>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit">
+                    <h5 class="font-weight-bold">Deposit</h5>
+                    <h2>$ <span id="updateD">00</span></h2>
+                </div>
+            
+                
+            </div>
+            <div class="col-md-4 ">
+                <div class="withdraw">
+                    <h5 class="font-weight-bold">Withdraw</h5>
+                    <h2>$<span id="updateW">00</span></h2>
+                </div>
+                
+            </div>
+            <div class="col-md-4 ">
+                <div class="balance">
+                    <h5 class="font-weight-bold">Balance</h5>
+                    <h2>$ <span id="updateT">1000</span></h2>
+                </div>
+                
+            </div>
+        </div>
+        <br><br>
+
+
+
+        <div class="row">
+               
+            <div class="col-md-6">
+                
+                <div id="inputDeposit">
+                    <h4 >Deposit</h4><br>
+                    <input id="din" type="text" class="form-control" placeholder="$ deposit here">
+                    <br>
+                    <button id="depositButton" class="btn btn-success">Deposit</button>
+
+                </div>
+                  
+                
+            </div>
+            <div class="col-md-6">
+                <div id="inputWithdraw">
+                    <h4 id="">Withdraw</h4><br>
+                    <input id="win" type="text" class="form-control" placeholder="$ deposit here">
+                    <br>
+                    <button id="wButton" class="btn btn-success">Deposit</button>
+
+                </div>
+                
+            </div>
+                
+        </div>
+        <h3 id="nei"></h3>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+     <script>
+         var btn=document.getElementById('button');
+         btn.addEventListener('click',function(){
+             //console.log("plx touch me");
+             //mail pass if else
+             const mail=document.getElementById('mail').value;
+             const mailn=parseFloat(mail);
+             const pass=document.getElementById('pass').value;
+             const passn=parseFloat(pass);
+
+             if(mail==pass){
+
+                console.log(pass);
+             var firstPage=document.getElementById('first');
+             firstPage.style.display="none";
+             
+             document.body.style.backgroundColor="lightyellow";
+
+             var transactionArea=document.getElementById('transactionArea');
+             transactionArea.style.display="block";
+
+             }
+             else{
+                const wrong=document.getElementById('wrong');
+                wrong.innerText="entered correctly & try again"
+
+                 document.getElementById('mail').value="entered correctly & try again";
+             }
+             
+         })
+
+
+         var dButton=document.getElementById('depositButton');
+         dButton.addEventListener('click',function(){
+           
+              const din=document.getElementById('din').value;
+              const dinValue=parseFloat(din);
+              //console.log(dinValue);// eta final value deposit
+
+            const updateD=document.getElementById('updateD').innerText;
+            const updateDNumber=parseFloat(updateD);
+
+              const total=dinValue+updateDNumber;
+              //console.log(total);
+              document.getElementById('updateD').innerText=total;
+
+            
+            const updateT=document.getElementById('updateT').innerText;
+            const updateTnumber=parseFloat(updateT);
+            const tt=updateTnumber+dinValue;
+            console.log(tt);
+            document.getElementById('updateT').innerText=tt;
+
+         })
+
+         var wButton=document.getElementById('wButton');
+         wButton.addEventListener('click',function(){
+             var win=document.getElementById('win').value;
+             var winValue=parseFloat(win);
+             console.log(winValue);
+
+
+             const updateW=document.getElementById('updateW').innerText;
+             const updateWNumber=parseFloat(updateW);
+
+             const totalWithdraw=updateWNumber+winValue;
+
+
+             //
+
+
+             const momo=document.getElementById('updateT').innerText;
+             const momos=parseFloat(momo);
+             const mk=momos-winValue;
+
+             if(mk>500)
+             {
+                document.getElementById('updateW').innerText=totalWithdraw;
+                document.getElementById('updateT').innerText=mk;
+             }
+
+             else{
+                document.getElementById('nei').innerText="insufficency blance";
+             }
+             
+
+
+
+         })
+     </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
